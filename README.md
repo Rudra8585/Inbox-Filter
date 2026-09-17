@@ -117,11 +117,32 @@ Choose *Keystore* and note the **SHA-1**. Then in the
    this one to issue tokens.
 4. **OAuth consent screen** → add your own account under **Test users**.
 
-Paste the *Web* client ID into `src/auth/googleAuthConfig.js` (copy it from
-`src/auth/googleAuthConfig.example.js` first — the real file is gitignored
-so your client ID never ends up in the repo). The Android client ID isn't
-pasted anywhere — it's matched automatically from your package name and
-fingerprint.
+Paste the *Web* client ID into a local `.env` file (copy
+`.env.example` to `.env` first — it's gitignored, so your client ID
+never ends up in the repo):
+
+```bash
+cp .env.example .env
+# then edit .env with your real Web client ID
+```
+
+This covers running the app locally (`expo start --dev-client`). Cloud
+builds via `eas build` don't read your local `.env` file — the build
+happens on Expo's servers, which never see files git doesn't track (it
+uploads only what git tracks). Give the build the same value directly:
+
+```bash
+eas env:create --name EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID --value "your-web-client-id.apps.googleusercontent.com" --environment preview --visibility plaintext
+```
+
+Repeat with `--environment development` and `--environment production`
+for any other profiles you build with — each EAS environment needs the
+variable set separately. `eas.json` in this repo already points each
+build profile at its matching EAS environment (the `"environment"` field
+in each profile), which is what makes `eas env:create` actually reach
+your build — without it, the variable exists on Expo's servers but never
+gets pulled in. The Android client ID isn't pasted anywhere — it's
+matched automatically from your package name and fingerprint.
 
 Because the app stays unverified, Google shows a warning on first
 sign-in. That's expected for a personal app talking to your own account.

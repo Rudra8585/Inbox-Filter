@@ -5,6 +5,6 @@
  * googleAuthConfig.js is gitignored — it will not be committed.
  */
 module.exports = {
-  WEB_CLIENT_ID: "YOUR_WEB_CLIENT_ID.apps.googleusercontent.com",
+  WEB_CLIENT_ID: ""183421898701-2g31qbnsnv3pa3io9s53peecb61941uj.apps.googleusercontent.com",
   IOS_CLIENT_ID: "YOUR_IOS_CLIENT_ID.apps.googleusercontent.com", // leave as-is if Android-only
 };

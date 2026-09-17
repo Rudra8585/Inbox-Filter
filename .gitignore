@@ -19,7 +19,6 @@ ios/
 google-services.json
 GoogleService-Info.plist
 credentials.json
-src/auth/googleAuthConfig.js
 token.json
 *.p8
 *.p12

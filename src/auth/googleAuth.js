@@ -1,18 +1,22 @@
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
-let authConfig;
-try {
-  // Your real, untracked config — see googleAuthConfig.example.js
-  authConfig = require("./googleAuthConfig");
-} catch {
+// Set via environment variables, not hardcoded — see README.md "Set up
+// Google OAuth". EXPO_PUBLIC_-prefixed vars are inlined into the JS bundle
+// at build time by Expo/Metro, and work the same way whether you're
+// running `expo start` locally (reads .env) or building with EAS
+// (reads values set via `eas env:create`). Neither path requires
+// committing the value to git.
+const WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID;
+const IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID;
+
+if (!WEB_CLIENT_ID) {
   throw new Error(
-    "Missing src/auth/googleAuthConfig.js. Copy googleAuthConfig.example.js " +
-      "to googleAuthConfig.js and fill in your own Google Cloud OAuth client IDs " +
-      "(see README.md)."
+    "EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID is not set. For local runs, add it to " +
+      ".env (see .env.example). For EAS builds, set it with " +
+      "`eas env:create` so it's available during the cloud build. " +
+      "See README.md, 'Set up Google OAuth'."
   );
 }
-
-const { WEB_CLIENT_ID, IOS_CLIENT_ID } = authConfig;
 
 const SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"];
 
