@@ -1,0 +1,44 @@
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# native builds
+android/
+ios/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# credentials — never commit these
+google-services.json
+GoogleService-Info.plist
+credentials.json
+src/auth/googleAuthConfig.js
+token.json
+*.p8
+*.p12
+*.mobileprovision
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+Thumbs.db
+
+# logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.log

@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Gmail Scanner",
+    "slug": "gmail-scanner",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rudra.gmailscanner"
+    },
+    "android": {
+      "package": "com.rudra.gmailscanner",
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ed2984da-e519-48c7-8c66-2301d9ae4dd9"
+      }
+    }
+  }
+}
